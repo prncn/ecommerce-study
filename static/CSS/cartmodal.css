@@ -1,0 +1,112 @@
+.cart-modal {
+    display: none;
+    position: fixed; 
+    z-index: 2; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: hidden; 
+    background-color: rgba(0,0,0,0.4); 
+    animation: fade-opacity 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    float: right;
+    height: 100%;
+    width: 50vh;
+    animation: slide-left 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@keyframes slide-left {
+    0% { transform: translateX(100px); opacity: 0;}
+    100% { transform: translateX(0); opacity: 1;}
+}
+
+@keyframes from-left {
+    0% { transform: translateX(-100px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes fade-opacity {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.close {
+    position: absolute;
+    right: 0;
+    color: var(--black-alt);
+    margin-right: 30px;
+    font-size: 3em;
+    font-weight: lighter;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.added-content {
+    margin: 30px;
+    margin-top: 50px;
+    height: 50%;
+}
+
+.wrapper-modal {
+    position: relative;
+    height: 100px;
+    margin-top: 20px;
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.05);
+    animation: from-left 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.wrapper-modal p {
+    vertical-align: middle;
+    padding-left: 110px;
+    line-height: 1.5em;
+}
+
+.wrapper-modal img {
+    object-fit: cover;
+    float: left;
+    height: 100%;
+    width: 100px;
+    background-color: coral;
+}
+
+.wrapper-modal span {
+    float: right;
+    position: relative;
+    right: 20px;
+    bottom: 10px;
+}
+
+.wrapper-modal span:hover,
+.wrapper-modal span:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-footer {
+    padding-left: 2rem;
+    background-color: var(--gray);
+    height: 150px;
+    position:absolute;
+    bottom: 0;
+    width: 50vh;
+}
+
+.modal-footer h2 {
+    margin-left: 1rem;
+    padding-top: 35px;
+    color: var(--black-alt);
+}
+
+.quant-text {
+    color: var(--black-alt);
+}

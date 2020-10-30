@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--ICONS-->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css">
+    <!-- FLICKITY -->
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="static/CSS/style.css">
+    <link rel="stylesheet" href="static/CSS/header.css">
+    <link rel="stylesheet" href="static/CSS/products.css">
+    <link rel="stylesheet" href="static/CSS/cartmodal.css">
+    <title>ECOM prototype</title>
+</head>
+<body>
+    <header>
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" style="fill:rgba(135, 236, 208, 1);transform:;-ms-filter:">
+        <path d="M17.726 13.02L14 16H9v-1h4.065c.399 0 .638-.445.416-.777l-.888-1.332C12.223 12.334 11.599 12 10.93 12H9 3c-.553 0-1 .447-1 1v6c0 1.104.896 2 2 2h9.639c.865 0 1.688-.373 2.258-1.024L22 13l-1.452-.484C19.583 12.194 18.521 12.384 17.726 13.02zM15.403 12c1.657 0 3-1.343 3-3 0-2.708-3-6-3-6s-3 3.271-3 6C12.403 10.657 13.747 12 15.403 12z"></path>
+      </svg>
+      <h1 class="logo">TheHiep</h1>
+      <nav id="float-nav">
+          <ul class="nav-links">
+              <li><a href="#">ABOUT</a> </li>
+              <li><a href="#">PRODUCTS</a> </li>
+              <li><a id="cart-btn">CART 
+                  <img class="icons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABDUlEQVRIS93UwTGEQRCG4WcjQASIQImADBABrhwQCQ5cEcGSARnIABGQAdXKqCn+MTNbu1Vb+jjV029/X/fMyIxjNOP6/hfgfYp2PWI96uUWTRPwgpWfgCTgDEe4wV6nqmOc5neHhhzkJ7xhqRNwjw3s4LakIM7DwzXs47oRsojXr9xoLBosrmmSeoftRkDkjfGAzXSn9A4Gu6mAQukuThBz/Iy/Hlp4uNXYfZ4W6xkWVwGxQVedgHOEvd9R+ypiUAtYxXMnrKogEpKvYVesXnfUFKQ30Vr4V70aIArH+sVWLDdQJgI01C2ntCiI2xc4wCUOs3Kl8+YtSon5T1v6gQebnRsFE8+hVcH8Aj4AYYIsGUjyKycAAAAASUVORK5CYII="/>
+                  <span class="cart-counter-icon" id="cart-counter"></span>
+              </a> </li>
+          </ul>
+      </nav>
+    </header>
+    <!--
+    <section class="hero">
+        <div class="hero-inner">
+            <h1>Clean and qualitative products.</h1>
+            <h1>It's simple, discover yourself.</h1>
+            <a href="#">BROWSE</a>
+        </div>
+    </section>
+    -->
+
+    <div class="hero-slider" data-carousel>
+        <div class="carousel-cell" style="background-image:url(/static/IMG/YWCosmetics-Packaging-Set-Mockup.png);">
+          <div class="overlay"></div>
+          <div class="inner">
+            <p class="subtitle">jetzt neu</p>
+            <h2 class="title">PROUKT BALD ERHÄTLICH</h2>
+            <a href="#" target="_blank" class="btn">ANSEHEN</a>
+          </div>
+        </div>
+        <div class="carousel-cell" style="background-image:url(/static/IMG/RDCosmetics-Packaging-Set-Mockup.png);">
+          <div class="overlay"></div>
+          <div class="inner">
+            <h3 class="subtitle">beliebt</h3>
+            <h2 class="title">Die meistbestellten Produkte</h2>
+            <a href="#" target="_blank" class="btn">ANSEHEN</a>
+          </div>
+        </div>
+        <div class="carousel-cell" style="background-image:url(/static/IMG/PRPCosmetics-Packaging-Set-Mockup.png);">
+          <div class="overlay"></div>
+          <div class="inner">
+            <h3 class="subtitle">schnell, einfach</h3>
+            <h2 class="title">TheHiep Qualitätssicherung</h2>
+            <a href="#" class="btn">ANSEHEN</a>
+          </div>
+        </div>
+    </div>
+
+    <h1 class="section-title">PRODUKTE</h1>
+    <section class="prod-section-container">
+      <div class="prod-section" id="prod-section">
+        <!--JS PRODUCTS-->
+      </div> 
+    </section>
+
+    <div id="cart-modal" class="cart-modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="added-content" id="added-content">
+          <!--JS MODAL CONTENT-->
+          <h1 style="font-family: var(--display-font); color: var(--gray);">Cart empty. <br> :(</h1>
+        </div>
+        <footer id="total-sum-modal" class="modal-footer">
+          <!--JS MODAL FOOTER CONTENT-->
+        </footer>
+      </div>
+    </div>
+    <div id="page-indicator">
+      <!--JS PAGINATION-->
+    </div>
+    
+
+      
+    <!-- SCRIPT -->
+    <script type="text/javascript" src="static/JS/main.js"></script>
+    <script type="text/javascript" src="static/JS/products.json"></script>
+</body>
+</html>
