@@ -30,7 +30,7 @@
 }
 
 @keyframes fade-opacity {
-    0% { opacity: 0; }
+    0% { opacity: 0.5; }
     100% { opacity: 1; }
 }
 
@@ -61,7 +61,7 @@
     height: 100px;
     margin-top: 20px;
     box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.05);
-    animation: from-left 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    animation: fade-opacity 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .wrapper-modal p {

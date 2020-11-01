@@ -80,12 +80,21 @@ document.addEventListener('DOMContentLoaded', () => {
 fetch("static/JS/products.json")
  .then(response => response.json())
  .then(prod => {
+   
+  let added_set = JSON.parse(localStorage.getItem("cart") || "[]");
+  let cart_count = sum_cart_count();
+  update_cart_counter();
+  render_modal();
 
+  if(added_set.length)
+    render_total_sum_modal();
+
+// Lazy unique product IDs for products JSON
 prod.forEach(item => {
   item.prodId = prod.indexOf(item);
 })
 
-console.log(prod.length)
+// console.log(prod.length)
 
 // Setup Pagination
 const perpage = 8;
@@ -130,13 +139,18 @@ add_to_cart_btn();
 
 //Pagination
 const page_btns = document.querySelectorAll(".page-btn");
+let prev = page_btns[0];
+prev.style.backgroundColor = "var(--gray)"
 page_btns.forEach(btn => {
   btn.onclick = () => {
+    prev.style.backgroundColor = "var(--prime-color)"
+    btn.style.backgroundColor = "var(--gray)"
     let current_load = btn.innerHTML;
     document.getElementById("prod-section").innerHTML = ''
     render_products(perpage*(current_load - 1), perpage*current_load);
     add_to_cart_btn();
     document.querySelector('.section-title').scrollIntoView({behavior: 'smooth'});
+    prev = btn;
 }})
   
 // Add to Shopping Cart
@@ -148,23 +162,41 @@ function add_to_cart_btn(){
       let boundProd = prod.find(item => item.prodId == searchKey)
       //console.log(boundProd);
       to_cart(boundProd);
+      //console.log(added_set);
     }
   })
 }
 
-let cart_count = 0;
-var added_set = [];
+
+//var added_set = [];
 function to_cart(item){
   add_item(item);
   render_modal();
   
   // Render modal footer (total sum) HTML
+  render_total_sum_modal();
+  document.getElementById("to-checkout").onclick = () => {
+    localStorage.setItem("cart", JSON.stringify(added_set));
+  }
+}
+
+function render_total_sum_modal(){
   document.getElementById("total-sum-modal").innerHTML = `
-    <h2 id="total-price">TOTAL: ${price_total(added_set)} €</h2>
+    <h2 id="total-price">Total: ${price_total(added_set)} €</h2>
     <div class="product-price-btn">
-      <button class="add-cart" type="button">GO TO CHECKOUT</button>
+      <button id="to-checkout" class="add-cart" type="button">GO TO CHECKOUT</button>
     </div>
-`}
+    `
+}
+
+// Calculates total quantity in cart
+function sum_cart_count(){
+  let sum = 0;
+  added_set.forEach(item => {
+    sum += item.amount;
+  })
+  return sum;
+}
 
 // Render modal HTML
 function render_modal(){
@@ -191,6 +223,11 @@ function render_modal(){
       </div>`
     }).join('')}`
 
+  if(cart_count == 0){
+    document.getElementById("added-content").innerHTML = `<h1 style="font-family: var(--display-font); color: var(--gray);">Cart empty. <br> :(</h1`
+    document.getElementById("total-sum-modal").innerHTML = ''
+  }
+
   // Handle add, sub, and delete icons inside the cart modal
   let plus_item = document.getElementsByClassName("plus-item");
   let minus_item = document.getElementsByClassName("minus-item");
@@ -212,11 +249,9 @@ function render_modal(){
       throw_item(added_set[i]);
       render_modal();
 
-      if(cart_count == 0){
-        document.getElementById("added-content").innerHTML = `<h1 style="font-family: var(--display-font); color: var(--gray);">Cart empty. <br> :(</h1`
-        document.getElementById("total-sum-modal").innerHTML = ''
-      }
+     
     }}
+
 }
 
 // Make sub icon gray if not available (less than 1 item), make black if available
@@ -235,19 +270,32 @@ function update_icon_color(item){
 // Update HTML when there were changes to variables
 function update_quantity_counts(i){
   document.getElementsByClassName("quant-text")[i].innerHTML = `Quantity: ${added_set[i].amount}`;
-  document.getElementById("total-price").innerHTML = `TOTAL: ${price_total(added_set)} €`
+  document.getElementById("total-price").innerHTML = `Total: ${price_total(added_set)} €`
   console.log(cart_count);
+}
+
+// Check if key exists in object array
+function check_key(prodId){
+  added_set.forEach(item => {
+    if(prodId in item)
+      return true;
+  })
+  return false;
 }
 
 // Helper function to add from inside the cart
 function add_item(item){
-  cart_count += 1;
-  document.getElementById("cart-counter").innerHTML = cart_count;
-  if(added_set.includes(item)){
+  console.log(added_set);
+  //console.log(local_cart)
+  if(added_set.includes(item) || check_key(item.prodId)){
     item.amount += 1;
+    cart_count = sum_cart_count();
+    update_cart_counter();
   } else {
     item.amount = 1;
     added_set.push(item);
+    cart_count = sum_cart_count();
+    update_cart_counter();
   }}
 
 // Helper function to substract from cart 
@@ -255,16 +303,27 @@ function subtract_item(item){
   if(item.amount == 1)
     return;
   
-  cart_count -= 1;
   item.amount -= 1;
-  document.getElementById("cart-counter").innerHTML = cart_count;
+  cart_count = sum_cart_count();
+  update_cart_counter();
 }
 
 // Helper function to delete from cart
 function throw_item(item){
-  cart_count -= item.amount;
   added_set.splice(added_set.indexOf(item), 1);
-  document.getElementById("total-price").innerHTML = `TOTAL: ${price_total(added_set)} €`
+  cart_count = sum_cart_count();
+  update_cart_counter();
+  document.getElementById("total-price").innerHTML = `Total: ${price_total(added_set)} €`
+}
+
+function update_cart_counter(){
+  const span_counter = document.getElementById("cart-counter");
+  if(cart_count){
+    span_counter.style.visibility = "visible";
+    span_counter.innerHTML = cart_count;
+  }
+  else
+    span_counter.style.visibility = "hidden";
 }
 
 // Calculate total cost and display in price format
