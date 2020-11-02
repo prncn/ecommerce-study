@@ -1,59 +1,3 @@
-// Flickity Hero Carousel
-var options = {
-    autoPlay: true,
-    accessibility: true,
-    prevNextButtons: true,
-    setGallerySize: false,
-    arrowShape: {
-      x0: 10, x1: 60,
-      y1: 50, x2: 60,
-      y2: 45, x3: 15
-    }
-};
-  
-var carousel = document.querySelector('[data-carousel]');
-var slides = document.getElementsByClassName('carousel-cell');
-var flkty = new Flickity(carousel, options);
-
-flkty.on('scroll', function () {
-    flkty.slides.forEach(function (slide, i) {
-    var image = slides[i];
-    var x = (slide.target + flkty.x) * -1/3;
-    image.style.backgroundPosition = x + 'px';
-    });
-});
-
-// Sticky Navbar
-const floatnav = document.getElementById("float-nav");
-const stickynav = floatnav.offsetTop;
-
-window.onscroll = () => {
-  if (window.pageYOffset >= stickynav+500) {
-    floatnav.classList.add("sticky-nav")
-  } else {
-    floatnav.classList.remove("sticky-nav");
-  }
-}
-
-// Shopping Cart Modal
-var modal = document.getElementById("cart-modal");
-var btn = document.getElementById("cart-btn");
-var span = document.getElementsByClassName("close")[0];
-
-btn.onclick = () => {
-  modal.style.display = "block";
-}
-
-span.onclick = () => {
-  modal.style.display = "none";
-}
-
-window.onclick = event => {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
 // Placeholder Product Data
 /*
 async function get_products(){
@@ -161,32 +105,37 @@ function add_to_cart_btn(){
       let searchKey = btn.getAttribute("data_prodId");
       let boundProd = prod.find(item => item.prodId == searchKey)
       //console.log(boundProd);
-      to_cart(boundProd);
+      console.log(boundProd);
+      add_item(boundProd);
+      render_modal();
+      render_total_sum_modal();
       //console.log(added_set);
+      //localStorage.setItem("cart", JSON.stringify(added_set));
     }
   })
 }
 
-
-//var added_set = [];
-function to_cart(item){
-  add_item(item);
-  render_modal();
-  
-  // Render modal footer (total sum) HTML
-  render_total_sum_modal();
-  document.getElementById("to-checkout").onclick = () => {
-    localStorage.setItem("cart", JSON.stringify(added_set));
-  }
-}
-
+// Render modal footer (total sum) HTML
 function render_total_sum_modal(){
   document.getElementById("total-sum-modal").innerHTML = `
-    <h2 id="total-price">Total: ${price_total(added_set)} €</h2>
-    <div class="product-price-btn">
-      <button id="to-checkout" class="add-cart" type="button">GO TO CHECKOUT</button>
-    </div>
-    `
+  <div class="modal-footer-price-info">
+  <div class="subtotal-info">
+  <div class="fw-bd">Subtotal</div>
+  <div class="r-fsm">${price_total(added_set)} €</div>
+  </div>
+  <div class="subtotal-info">
+  <div class="fw-bd">Shipping</div>
+  <div class="r-fsm">Free DE shipping</div>
+  </div>
+  </div>
+  <div class="product-price-btn">
+    <button id="to-checkout" type="button">GO TO CHECKOUT</button>
+  </div>
+  `
+  document.getElementById("to-checkout").onclick = () => {
+    localStorage.setItem("cart", JSON.stringify(added_set));
+    location.href='checkout.html';
+  }
 }
 
 // Calculates total quantity in cart
@@ -205,11 +154,11 @@ function render_modal(){
       <div class="wrapper-modal">
         <img src="static/IMG/${item.image}">
         <p>${item.brand} - ${item.title}</p>
-        <p class="quant-text">Quantity: ${item.amount}</p> 
+        <p class="q-txt col-ba">Quantity: ${item.amount}</p> 
         <p>${item.price} €</p>
         <span class="trash-item" data_item="${added_set.indexOf(item)}">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
-            <path d="M6 7C5.447 7 5 7 5 7v13c0 1.104.896 2 2 2h10c1.104 0 2-.896 2-2V7c0 0-.447 0-1 0H6zM16.618 4L15 2 9 2 7.382 4 3 4 3 6 8 6 16 6 21 6 21 4z"></path>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(255, 129, 99, 1);transform:;-ms-filter:">
+            <path d="M6 7C5.447 7 5 7 5 7v13c0 1.104.896 2 2 2h10c1.104 0 2-.896 2-2V7c0 0-.447 0-1 0H6zM10 19H8v-9h2V19zM16 19h-2v-9h2V19zM16.618 4L15 2 9 2 7.382 4 3 4 3 6 8 6 16 6 21 6 21 4z"></path>
           </svg>
         </span>
         <span class="plus-item" data_item="${added_set.indexOf(item)}">
@@ -236,22 +185,22 @@ function render_modal(){
     plus_item[i].onclick = () => {
       add_item(added_set[i]);
       update_quantity_counts(i);
+      render_total_sum_modal();
       minus_item[i].innerHTML = update_icon_color(added_set[i]);
     }
 
     minus_item[i].onclick = () => {
       subtract_item(added_set[i]);
       update_quantity_counts(i);
+      render_total_sum_modal();
       minus_item[i].innerHTML = update_icon_color(added_set[i]);
     }
 
     trash_item[i].onclick = () => {
       throw_item(added_set[i]);
       render_modal();
-
-     
     }}
-
+    
 }
 
 // Make sub icon gray if not available (less than 1 item), make black if available
@@ -269,26 +218,31 @@ function update_icon_color(item){
 
 // Update HTML when there were changes to variables
 function update_quantity_counts(i){
-  document.getElementsByClassName("quant-text")[i].innerHTML = `Quantity: ${added_set[i].amount}`;
-  document.getElementById("total-price").innerHTML = `Total: ${price_total(added_set)} €`
+  document.getElementsByClassName("q-txt")[i].innerHTML = `Quantity: ${added_set[i].amount}`;
+  update_cart_counter();
   console.log(cart_count);
 }
 
 // Check if key exists in object array
 function check_key(prodId){
-  added_set.forEach(item => {
-    if(prodId in item)
+  for(let i=0; i<added_set.length; i++){
+    if(added_set[i].prodId===prodId){
       return true;
-  })
+    }
+  }
   return false;
 }
 
 // Helper function to add from inside the cart
 function add_item(item){
-  console.log(added_set);
+  //console.log(check_key(item.prodId));
+  //console.log(added_set);
   //console.log(local_cart)
   if(added_set.includes(item) || check_key(item.prodId)){
+    //console.log(Object.keys(item));
+    item = added_set.find(cartitem => item.prodId === cartitem.prodId);
     item.amount += 1;
+    //console.log(item.amount);
     cart_count = sum_cart_count();
     update_cart_counter();
   } else {
@@ -313,7 +267,7 @@ function throw_item(item){
   added_set.splice(added_set.indexOf(item), 1);
   cart_count = sum_cart_count();
   update_cart_counter();
-  document.getElementById("total-price").innerHTML = `Total: ${price_total(added_set)} €`
+  render_total_sum_modal();
 }
 
 function update_cart_counter(){
@@ -333,6 +287,11 @@ function price_total(added_set){
     sum += item.price * item.amount;
   })
   return sum.toFixed(2);
+}
+
+// Click clear in nav bar to clear cart
+document.getElementById("clear-btn").onclick = () => {
+  localStorage.clear();
 }
 
 })

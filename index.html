@@ -13,23 +13,23 @@
     <link rel="stylesheet" href="static/CSS/header.css">
     <link rel="stylesheet" href="static/CSS/products.css">
     <link rel="stylesheet" href="static/CSS/cartmodal.css">
-    <title>ECOM prototype</title>
+    <title>TheHiep Shop Study</title>
 </head>
 <body>
     <header>
-      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" style="fill:rgba(135, 236, 208, 1);transform:;-ms-filter:">
-        <path d="M17.726 13.02L14 16H9v-1h4.065c.399 0 .638-.445.416-.777l-.888-1.332C12.223 12.334 11.599 12 10.93 12H9 3c-.553 0-1 .447-1 1v6c0 1.104.896 2 2 2h9.639c.865 0 1.688-.373 2.258-1.024L22 13l-1.452-.484C19.583 12.194 18.521 12.384 17.726 13.02zM15.403 12c1.657 0 3-1.343 3-3 0-2.708-3-6-3-6s-3 3.271-3 6C12.403 10.657 13.747 12 15.403 12z"></path>
-      </svg>
-      <h1 class="logo">TheHiep</h1>
+      <a href="index.html" style="margin-right: auto; display: flex;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" style="fill:rgba(135, 236, 208, 1);"><path d="M10 3H4C3.447 3 3 3.447 3 4v6c0 .553.447 1 1 1h6c.553 0 1-.447 1-1V4C11 3.447 10.553 3 10 3zM9 9H5V5h4V9zM20 3h-6c-.553 0-1 .447-1 1v6c0 .553.447 1 1 1h6c.553 0 1-.447 1-1V4C21 3.447 20.553 3 20 3zM19 9h-4V5h4V9zM10 13H4c-.553 0-1 .447-1 1v6c0 .553.447 1 1 1h6c.553 0 1-.447 1-1v-6C11 13.447 10.553 13 10 13zM9 19H5v-4h4V19zM17 13c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4S19.206 13 17 13zM17 19c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2S18.103 19 17 19z"></path></svg>
+      <h1 class="logo" style="padding-left: 1rem">TheHiep</h1>
+      </a>
       <nav id="float-nav">
-          <ul class="nav-links">
-              <li><a href="about.html">ABOUT</a> </li>
-              <li><a href="#prod-anchor">PRODUCTS</a> </li>
-              <li><a id="cart-btn">CART 
-                  <img class="icons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABDUlEQVRIS93UwTGEQRCG4WcjQASIQImADBABrhwQCQ5cEcGSARnIABGQAdXKqCn+MTNbu1Vb+jjV029/X/fMyIxjNOP6/hfgfYp2PWI96uUWTRPwgpWfgCTgDEe4wV6nqmOc5neHhhzkJ7xhqRNwjw3s4LakIM7DwzXs47oRsojXr9xoLBosrmmSeoftRkDkjfGAzXSn9A4Gu6mAQukuThBz/Iy/Hlp4uNXYfZ4W6xkWVwGxQVedgHOEvd9R+ypiUAtYxXMnrKogEpKvYVesXnfUFKQ30Vr4V70aIArH+sVWLDdQJgI01C2ntCiI2xc4wCUOs3Kl8+YtSon5T1v6gQebnRsFE8+hVcH8Aj4AYYIsGUjyKycAAAAASUVORK5CYII="/>
-                  <span class="cart-counter-icon" id="cart-counter"></span>
-              </a> </li>
-          </ul>
+        <ul class="nav-links">
+            <li><a id="clear-btn">Clear</a></li>
+            <li><a href="#prod-anchor">Products</a></li>
+            <li><a id="cart-btn">Cart 
+                <img class="icons" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABDUlEQVRIS93UwTGEQRCG4WcjQASIQImADBABrhwQCQ5cEcGSARnIABGQAdXKqCn+MTNbu1Vb+jjV029/X/fMyIxjNOP6/hfgfYp2PWI96uUWTRPwgpWfgCTgDEe4wV6nqmOc5neHhhzkJ7xhqRNwjw3s4LakIM7DwzXs47oRsojXr9xoLBosrmmSeoftRkDkjfGAzXSn9A4Gu6mAQukuThBz/Iy/Hlp4uNXYfZ4W6xkWVwGxQVedgHOEvd9R+ypiUAtYxXMnrKogEpKvYVesXnfUFKQ30Vr4V70aIArH+sVWLDdQJgI01C2ntCiI2xc4wCUOs3Kl8+YtSon5T1v6gQebnRsFE8+hVcH8Aj4AYYIsGUjyKycAAAAASUVORK5CYII="/>
+                <span class="cart-counter-icon" id="cart-counter"></span>
+            </a> </li>
+        </ul>
       </nav>
     </header>
     <!--
@@ -91,11 +91,10 @@
     <div id="page-indicator">
       <!--JS PAGINATION-->
     </div>
-    
-
       
-    <!-- SCRIPT -->
-    <script type="text/javascript" src="static/JS/main.js"></script>
+    <!-- SCRIPTS -->
+    <script type="text/javascript" src="static/JS/dataHandling.js"></script>
+    <script type="text/javascript" src="static/JS/peripherals.js"></script>
     <script type="text/javascript" src="static/JS/products.json"></script>
 </body>
 </html>

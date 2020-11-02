@@ -1,0 +1,87 @@
+html {
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    overflow: hidden;
+    height: 100%;
+}
+
+.wrap {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+
+    padding: 0 5%;
+    height: 100%;
+    width: 90%;
+    max-width: 78.5714285714em;
+}
+
+.co-main, .co-sidebar {
+    padding-top: 4em;
+}
+
+.co-main-header {
+    padding-bottom: 2em;
+}
+
+.co-main {
+    width: 52%;
+    padding-right: 6%;
+    float: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.co-main h3 {
+    font-size: 1.25em;
+    font-weight: 300;
+}
+
+.co-sidebar {
+
+    position: relative;
+    color: #535353;
+
+    width: 38%;
+    padding-left: 4%;
+    background-position: left top;
+    float: right;
+}
+
+.co-sidebar::after {
+    content: "";
+    display: block;
+    width: 300%;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    bottom: 0;
+    background: #fafafa;
+    z-index: -1;
+    -webkit-box-shadow: 0 -1px 0 #e1e1e1 inset;
+    box-shadow: 0 -1px 0 #e1e1e1 inset;
+
+    left: 0;
+    background-position: left top; 
+    -webkit-box-shadow: 1px 0 0 #e1e1e1 inset; 
+    box-shadow: 1px 0 0 #e1e1e1 inset;
+}
+
+.co-sidebar li::after {
+    background-color: rgba(175, 175, 175, 0.34);
+    bottom: 0px;
+}
+
+#ref-check-cart {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}

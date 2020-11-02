@@ -7,13 +7,6 @@ header {
 }
 
 /* CLASS */
-.logo {
-    font-family: var(--display-font);
-    font-weight: 400;
-    cursor: pointer;
-    margin-right: auto;
-}
-
 .cart-counter-icon {
     position: absolute;
     right: -5px;
@@ -62,7 +55,6 @@ header {
 
 .nav-links li a {
     text-transform: uppercase;
-    text-decoration: none;
     letter-spacing: 0.15em;
     
     display: inline-block;

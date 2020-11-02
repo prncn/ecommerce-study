@@ -93,7 +93,7 @@
 }
 
 .modal-footer {
-    padding-left: 2rem;
+    padding: 1.5rem;
     background-color: var(--gray);
     height: 150px;
     position:absolute;
@@ -101,12 +101,21 @@
     width: 50vh;
 }
 
-.modal-footer h2 {
-    margin-left: 1rem;
-    padding-top: 35px;
-    color: var(--black-alt);
+
+.modal-footer-price-info {
+    padding-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.quant-text {
-    color: var(--black-alt);
+.subtotal-info {
+    display: flex;
+    justify-content: space-between;
 }
+
+#to-checkout {
+    width: 100%;
+    margin: 0;
+}
+

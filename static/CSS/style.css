@@ -1,5 +1,5 @@
 /* FONTS IMPORT */
-@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Vidaloka&display=swap');
 /* PARAMS */
@@ -9,11 +9,11 @@
 
 /* COLORS */
 :root {
-    --prime-color: #87ecd0;;
-    --prime-color-alt: #4bad9d;;
+    --prime-color: #87ecd0;
+    --prime-color-alt: #4bad9d;
     --white: #fafafa;
     --black: #101010;
-    --black-alt: #747474;
+    --black-alt: #a1a1a1;
     --gray: #f0f1f3
 }
 
@@ -49,7 +49,6 @@ body, html {
 }
 
 body {
-    scroll-behavior: smooth;
     overflow-y: scroll;
     margin: var(--header-height) 0 0 0;
     font-family: var(--body-font);
@@ -58,7 +57,7 @@ body {
     line-height: 1.6;
 }
 
-h1, h2, p, ul {
+h1, h2, p, ul, li {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -68,14 +67,14 @@ h1 {
     font-size: var(--h1-size);
 }
 
-a {
+a, a:hover {
     text-decoration: none;
     color: var(--black);
     cursor: pointer;
 }
 
+
 button {
-    margin-left: 20px;
     padding: 9px 25px;
     background-color: var(--prime-color);
     border: none;
@@ -85,6 +84,25 @@ button {
 }
 
 /* CLASS */
+.col-ba {
+    color: var(--black-alt);
+}
+
+.fw-bd {
+    font-weight: 800;
+}
+
+.fw-lt {
+    font-weight: 400;
+}
+
+.logo {
+    font-family: var(--display-font);
+    font-weight: 400;
+    cursor: pointer;
+    margin-right: auto;
+}
+
 .icons {
     margin: auto;
     vertical-align: middle; 
@@ -120,6 +138,7 @@ button {
     height: 40px;
     width: 40px;
     padding: 0;
+    margin: 0 5px 0 5px;
     border: transparent;
     font-size: 14px;
     font-weight: bold;
