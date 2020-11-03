@@ -61,7 +61,7 @@ function render_products(start, end){
     document.getElementById("prod-section").insertAdjacentHTML('beforeend', `
       <div class="wrapper">
         <div class="product-img">
-            <img src="/static/IMG/${prod[i].image}">
+            <img src="static/IMG/${prod[i].image}">
         </div>
         <div class="product-info">
         <div class="product-text">
