@@ -12,6 +12,7 @@
 }
 
 .modal-content {
+    position: relative;
     background-color: #fefefe;
     float: right;
     height: 100%;
@@ -36,10 +37,11 @@
 
 .close {
     position: absolute;
-    right: 0;
+    left: 30px;
+    top: 0;
     color: var(--black-alt);
     margin-right: 30px;
-    font-size: 3em;
+    padding-top: 2rem;
     font-weight: lighter;
 }
 
@@ -50,9 +52,16 @@
     cursor: pointer;
 }
 
+.modal-title {
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    margin-top: 2rem;
+}
+
 .added-content {
     margin: 30px;
-    margin-top: 50px;
     height: 50%;
 }
 
@@ -83,6 +92,11 @@
     position: relative;
     right: 20px;
     bottom: 10px;
+    padding: 5px;
+}
+
+.plus-item {
+    filter: drop-shadow(3px 3px 2px rgba(135, 236, 208, 0.5));
 }
 
 .wrapper-modal span:hover,
@@ -93,12 +107,14 @@
 }
 
 .modal-footer {
-    padding: 1.5rem;
+    padding: 1.7rem;
     background-color: var(--gray);
-    height: 150px;
-    position:absolute;
+    position: absolute;
     bottom: 0;
-    width: 50vh;
+    width: inherit;
+    line-height: 2;
+    font-family: var(--text-font);
+    letter-spacing: ;
 }
 
 

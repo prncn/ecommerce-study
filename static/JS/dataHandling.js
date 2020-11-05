@@ -155,17 +155,14 @@ function render_modal(){
         <img src="static/IMG/${item.image}">
         <p>${item.brand} - ${item.title}</p>
         <p class="q-txt col-ba">Quantity: ${item.amount}</p> 
-        <p>${item.price} €</p>
+        <p class="p-txt" style="font-weight: 600;">${(item.price * item.amount).toFixed(2)} €</p>
         <span class="trash-item" data_item="${added_set.indexOf(item)}">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(255, 129, 99, 1);transform:;-ms-filter:">
-            <path d="M6 7C5.447 7 5 7 5 7v13c0 1.104.896 2 2 2h10c1.104 0 2-.896 2-2V7c0 0-.447 0-1 0H6zM10 19H8v-9h2V19zM16 19h-2v-9h2V19zM16.618 4L15 2 9 2 7.382 4 3 4 3 6 8 6 16 6 21 6 21 4z"></path>
-          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:"><path d="M15,2H9C7.897,2,7,2.897,7,4v2H3v2h2v12c0,1.103,0.897,2,2,2h10c1.103,0,2-0.897,2-2V8h2V6h-4V4C17,2.897,16.103,2,15,2z M9,4h6v2H9V4z M17,20H7V8h1h8h1V20z"></path></svg>
         </span>
         <span class="plus-item" data_item="${added_set.indexOf(item)}">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:">
-            <path d="M12,2C6.486,2,2,6.486,2,12s4.486,10,10,10c5.514,0,10-4.486,10-10S17.514,2,12,2z M17,13h-4v4h-2v-4H7v-2h4V7h2v4h4V13z"></path>
-          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(135, 236, 208, 1);transform:;-ms-filter:"><path d="M19 11L13 11 13 5 11 5 11 11 5 11 5 13 11 13 11 19 13 19 13 13 19 13z"></path></svg>
         </span>
+        <span class="q-txt-bg" style="font-weight: 800; font-size: 1.2em; line-height: 1.2; color: var(--black-alt);">${item.amount}</span> 
         <span class="minus-item" data_item="${added_set.indexOf(item)}">
           ${update_icon_color(item)}
         </span>
@@ -206,10 +203,8 @@ function render_modal(){
 // Make sub icon gray if not available (less than 1 item), make black if available
 function update_icon_color(item){
   function minus_btn_template(num){ return `
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, ${num});transform:;-ms-filter:">
-      <path d="M12,2C6.486,2,2,6.486,2,12s4.486,10,10,10s10-4.486,10-10S17.514,2,12,2z M17,13H7v-2h10V13z"></path>
-    </svg>`}
-
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(135, 236, 208, ${num})">
+  <path d="M5 11H19V13H5z"></path></svg>`}
   if(item.amount > 1)
     return minus_btn_template(1);
 
@@ -219,6 +214,8 @@ function update_icon_color(item){
 // Update HTML when there were changes to variables
 function update_quantity_counts(i){
   document.getElementsByClassName("q-txt")[i].innerHTML = `Quantity: ${added_set[i].amount}`;
+  document.getElementsByClassName("q-txt-bg")[i].innerHTML = `${added_set[i].amount}`;
+  document.getElementsByClassName("p-txt")[i].innerHTML = `${(added_set[i].price * added_set[i].amount).toFixed(2)} €`
   update_cart_counter();
   console.log(cart_count);
 }

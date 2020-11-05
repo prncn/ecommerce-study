@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Vidaloka&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+
 /* PARAMS */
 :root {
     --header-height: 2rem;
@@ -19,9 +21,10 @@
 
 /* FONTS */
 :root {
-    --body-font: 'Mukta', sans-serif;
+    --body-font: 'Heebo', sans-serif;
     --display-font: 'Yeseva One', cursive;
-
+    --text-font: 'Heebo', sans-serif;
+    
     --h1-size: 2rem;
     --h2-size: .25rem;
     --regular-size: 1.2rem;
