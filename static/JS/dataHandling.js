@@ -41,7 +41,7 @@ prod.forEach(item => {
 // console.log(prod.length)
 
 // Setup Pagination
-const perpage = 8;
+const perpage = 6;
 let page_num = Math.floor(prod.length/perpage);
 const page_rem = prod.length % perpage;
 if(page_rem != 0)
@@ -58,6 +58,8 @@ for(let i=0; i<page_num; i++){
 // Render Product Section
 function render_products(start, end){
   for(let i=start; i<end; i++) {
+    if(i >= prod.length)
+      return 
     document.getElementById("prod-section").insertAdjacentHTML('beforeend', `
       <div class="wrapper">
         <div class="product-img">
@@ -91,6 +93,7 @@ page_btns.forEach(btn => {
     btn.style.backgroundColor = "var(--gray)"
     let current_load = btn.innerHTML;
     document.getElementById("prod-section").innerHTML = ''
+    //console.log(current_load, page_num)
     render_products(perpage*(current_load - 1), perpage*current_load);
     add_to_cart_btn();
     document.querySelector('.section-title').scrollIntoView({behavior: 'smooth'});

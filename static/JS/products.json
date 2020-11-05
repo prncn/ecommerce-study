@@ -52,43 +52,8 @@
         "brand": "Lateral",
         "title": "One of them is Leaning",
         "price": 3.79,
-        "image": "cbe3acecb4bd3fef7218a70bf6aa6544.jpg",
+        "image": "PSD-Product-Packaging-Box-Mockup.jpg",
         "prodId": "008"
-    },
-    {
-        "brand": "Burundi",
-        "title": "Short description",
-        "price": 1.29,
-        "image": "milk-packaging-mockup-featured.jpg",
-        "prodId": "009"
-    },
-    {
-        "brand": "Lateral",
-        "title": "One of them is Leaning",
-        "price": 3.79,
-        "image": "cbe3acecb4bd3fef7218a70bf6aa6544.jpg",
-        "prodId": "010"
-    },
-    {
-        "brand": "Burundi",
-        "title": "Short description",
-        "price": 1.29,
-        "image": "milk-packaging-mockup-featured.jpg",
-        "prodId": "011"
-    },
-    {
-        "brand": "Lateral",
-        "title": "One of them is Leaning",
-        "price": 3.79,
-        "image": "cbe3acecb4bd3fef7218a70bf6aa6544.jpg",
-        "prodId": "012"
-    },
-    {
-        "brand": "Burundi",
-        "title": "Short description",
-        "price": 1.29,
-        "image": "milk-packaging-mockup-featured.jpg",
-        "prodId": "013"
     },
     {
         "brand": "Cream",
@@ -143,43 +108,43 @@
         "brand": "Lateral",
         "title": "One of them is Leaning",
         "price": 3.79,
-        "image": "cbe3acecb4bd3fef7218a70bf6aa6544.jpg",
+        "image": "PSD-Product-Packaging-Box-Mockup.jpg",
         "prodId": "008"
     },
     {
-        "brand": "Burundi",
-        "title": "Short description",
-        "price": 1.29,
-        "image": "milk-packaging-mockup-featured.jpg",
-        "prodId": "009"
+        "brand": "Cream",
+        "title": "Brown Tin Tall",
+        "price": 24.49,
+        "image": "29_product-mockups.jpg",
+        "prodId": "001"
     },
     {
-        "brand": "Lateral",
-        "title": "One of them is Leaning",
-        "price": 3.79,
-        "image": "cbe3acecb4bd3fef7218a70bf6aa6544.jpg",
-        "prodId": "010"
+        "brand": "Brand",
+        "title": "Some Kind of Soap",
+        "price": 12.42,
+        "image": "18_product-mockup.jpg",
+        "prodId": "002"
     },
     {
-        "brand": "Burundi",
-        "title": "Short description",
-        "price": 1.29,
-        "image": "milk-packaging-mockup-featured.jpg",
-        "prodId": "011"
+        "brand": "Drab",
+        "title": "Actual Ice Cream",
+        "price": 5.99,
+        "image": "14_product-mockup.jpg",
+        "prodId": "003"
     },
     {
-        "brand": "Lateral",
-        "title": "One of them is Leaning",
-        "price": 3.79,
-        "image": "cbe3acecb4bd3fef7218a70bf6aa6544.jpg",
-        "prodId": "012"
+        "brand": "Quaint",
+        "title": "Piece Four",
+        "price": 13.79,
+        "image": "packaging-mockups.png",
+        "prodId": "004"
     },
     {
-        "brand": "Burundi",
-        "title": "Short description",
-        "price": 1.29,
-        "image": "milk-packaging-mockup-featured.jpg",
-        "prodId": "013"
+        "brand": "Nwun",
+        "title": "Vague Cosmetics",
+        "price": 28.19,
+        "image": "7_product-mockup.jpg",
+        "prodId": "005"
     },
     {
         "brand": "Lateral",
@@ -193,48 +158,70 @@
         "title": "Short description",
         "price": 1.29,
         "image": "milk-packaging-mockup-featured.jpg",
-        "prodId": "026"
+        "prodId": "007"
+    },
+    {
+        "brand": "Lateral",
+        "title": "One of them is Leaning",
+        "price": 3.79,
+        "image": "PSD-Product-Packaging-Box-Mockup.jpg",
+        "prodId": "008"
+    },
+    {
+        "brand": "Cream",
+        "title": "Brown Tin Tall",
+        "price": 24.49,
+        "image": "29_product-mockups.jpg",
+        "prodId": "001"
+    },
+    {
+        "brand": "Brand",
+        "title": "Some Kind of Soap",
+        "price": 12.42,
+        "image": "18_product-mockup.jpg",
+        "prodId": "002"
+    },
+    {
+        "brand": "Drab",
+        "title": "Actual Ice Cream",
+        "price": 5.99,
+        "image": "14_product-mockup.jpg",
+        "prodId": "003"
+    },
+    {
+        "brand": "Quaint",
+        "title": "Piece Four",
+        "price": 13.79,
+        "image": "packaging-mockups.png",
+        "prodId": "004"
+    },
+    {
+        "brand": "Nwun",
+        "title": "Vague Cosmetics",
+        "price": 28.19,
+        "image": "7_product-mockup.jpg",
+        "prodId": "005"
     },
     {
         "brand": "Lateral",
         "title": "One of them is Leaning",
         "price": 3.79,
         "image": "cbe3acecb4bd3fef7218a70bf6aa6544.jpg",
-        "prodId": "027"
+        "prodId": "006"
     },
     {
         "brand": "Burundi",
         "title": "Short description",
         "price": 1.29,
         "image": "milk-packaging-mockup-featured.jpg",
-        "prodId": "028"
+        "prodId": "007"
     },
     {
         "brand": "Lateral",
         "title": "One of them is Leaning",
         "price": 3.79,
-        "image": "cbe3acecb4bd3fef7218a70bf6aa6544.jpg",
-        "prodId": "029"
-    },
-    {
-        "brand": "Burundi",
-        "title": "Short description",
-        "price": 1.29,
-        "image": "milk-packaging-mockup-featured.jpg",
-        "prodId": "030"
-    },
-    {
-        "brand": "Lateral",
-        "title": "One of them is Leaning",
-        "price": 3.79,
-        "image": "cbe3acecb4bd3fef7218a70bf6aa6544.jpg",
-        "prodId": "031"
-    },
-    {
-        "brand": "Burundi",
-        "title": "Short description",
-        "price": 1.29,
-        "image": "milk-packaging-mockup-featured.jpg",
-        "prodId": "032"
+        "image": "PSD-Product-Packaging-Box-Mockup.jpg",
+        "prodId": "008"
     }
+    
 ]
