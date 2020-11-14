@@ -57,6 +57,7 @@ for(let i=0; i<2; i++){
     sidebar_cart_footer[i].style.backgroundColor = "inherit";
     sidebar_cart_footer[i].style.position = "relative";
     sidebar_cart_footer[i].style.height = "auto";
+    sidebar_cart_footer[i].style.width = "auto";
     sidebar_cart_footer[i].style.padding = "1rem";
     sidebar_cart_footer[i].getElementsByClassName("modal-footer-price-info")[0].style.width = "100%"
 }
