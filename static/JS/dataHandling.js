@@ -1,25 +1,3 @@
-// Placeholder Product Data
-/*
-async function get_products(){
-  try {
-    let result = await fetch("static/JS/products.json");
-    let data = result.json();
-    return data;
-  } catch (error) {
-    console.log(error)
-  }
-}
-
-let product_data = [];
-document.addEventListener('DOMContentLoaded', () => {
-  get_products().then(data => {
-    data.forEach(item => {
-      product_data.push(item)
-    })
-  });
-  console.log(product_data);
-})
-*/
 
 fetch("static/JS/products.json")
  .then(response => response.json())
@@ -55,7 +33,12 @@ for(let i=0; i<page_num; i++){
   page_ind.appendChild(page_btn);
 }
                       
-// Render Product Section
+
+/**
+ * Render one page of products list.
+ * @param {Int} start 
+ * @param {Int} end 
+ */
 function render_products(start, end){
   for(let i=start; i<end; i++) {
     if(i >= prod.length)
@@ -68,10 +51,10 @@ function render_products(start, end){
         <div class="product-info">
         <div class="product-text">
             <h1>${prod[i].brand}</h1>
-            <h2>${prod[i].title}</h2>
+            <h2 class="sm-uc">${prod[i].title}</h2>
         </div>
+        <p class="price-tag">${prod[i].price} €</p>
         <div class="product-price-btn">
-            <p>${prod[i].price} €</p>
             <button class="add-cart" data_prodId="${prod[i].prodId}" type="button">ADD TO CART</button>
         </div>
         </div>
@@ -99,12 +82,16 @@ page_btns.forEach(btn => {
     document.querySelector('.section-title').scrollIntoView({behavior: 'smooth'});
     prev = btn;
 }})
-  
-// Add to Shopping Cart
+ 
+
+/**
+ * Cart creation when addcart button is clicked.
+ */
 function add_to_cart_btn(){
   const add_btns = document.querySelectorAll(".add-cart")
   add_btns.forEach(btn => {
     btn.onclick = () => {
+      modal.style.display = "block";
       let searchKey = btn.getAttribute("data_prodId");
       let boundProd = prod.find(item => item.prodId == searchKey)
       //console.log(boundProd);
@@ -118,18 +105,21 @@ function add_to_cart_btn(){
   })
 }
 
-// Render modal footer (total sum) HTML
+
+/**
+ * Render footer of cart modal.
+ */
 function render_total_sum_modal(){
   document.getElementById("total-sum-modal").innerHTML = `
   <div class="modal-footer-price-info">
-  <div class="subtotal-info">
-  <div class="fw-bd">Subtotal</div>
-  <div class="r-fsm">${price_total(added_set)} €</div>
-  </div>
-  <div class="subtotal-info">
-  <div class="fw-bd">Shipping</div>
-  <div class="r-fsm">Free DE shipping</div>
-  </div>
+    <div class="subtotal-info">
+      <div class="fw-bd">Subtotal</div>
+      <div class="r-fsm">${price_total(added_set)} €</div>
+    </div>
+    <div class="subtotal-info">
+      <div class="fw-bd">Shipping</div>
+      <div class="r-fsm">Free DE shipping</div>
+    </div>
   </div>
   <div class="product-price-btn">
     <button id="to-checkout" type="button">GO TO CHECKOUT</button>
@@ -156,9 +146,11 @@ function render_modal(){
     return`
       <div class="wrapper-modal">
         <img src="static/IMG/${item.image}">
-        <p>${item.brand} - ${item.title}</p>
-        <p class="q-txt col-ba">Quantity: ${item.amount}</p> 
-        <p class="p-txt" style="font-weight: 600;">${(item.price * item.amount).toFixed(2)} €</p>
+        <div class="cart-modal-text">
+          <p style="padding-top: 10px">${item.brand} - ${item.title}</p>
+          <p class="col-ba sm-uc">In Stock.</p> 
+          <p class="p-txt" style="font-weight: 600;">${(item.price * item.amount).toFixed(2)} €</p>
+        </div>
         <span class="trash-item" data_item="${added_set.indexOf(item)}">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:rgba(0, 0, 0, 1);transform:;-ms-filter:"><path d="M15,2H9C7.897,2,7,2.897,7,4v2H3v2h2v12c0,1.103,0.897,2,2,2h10c1.103,0,2-0.897,2-2V8h2V6h-4V4C17,2.897,16.103,2,15,2z M9,4h6v2H9V4z M17,20H7V8h1h8h1V20z"></path></svg>
         </span>
@@ -203,6 +195,27 @@ function render_modal(){
     
 }
 
+
+// Shopping Cart Modal
+var modal = document.getElementById("cart-modal");
+var btn = document.getElementById("cart-btn");
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = () => {
+  modal.style.display = "block";
+}
+
+span.onclick = () => {
+  modal.style.display = "none";
+}
+
+window.onclick = event => {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
 // Make sub icon gray if not available (less than 1 item), make black if available
 function update_icon_color(item){
   function minus_btn_template(num){ return `
@@ -216,7 +229,6 @@ function update_icon_color(item){
 
 // Update HTML when there were changes to variables
 function update_quantity_counts(i){
-  document.getElementsByClassName("q-txt")[i].innerHTML = `Quantity: ${added_set[i].amount}`;
   document.getElementsByClassName("q-txt-bg")[i].innerHTML = `${added_set[i].amount}`;
   document.getElementsByClassName("p-txt")[i].innerHTML = `${(added_set[i].price * added_set[i].amount).toFixed(2)} €`
   update_cart_counter();
@@ -235,9 +247,6 @@ function check_key(prodId){
 
 // Helper function to add from inside the cart
 function add_item(item){
-  //console.log(check_key(item.prodId));
-  //console.log(added_set);
-  //console.log(local_cart)
   if(added_set.includes(item) || check_key(item.prodId)){
     //console.log(Object.keys(item));
     item = added_set.find(cartitem => item.prodId === cartitem.prodId);

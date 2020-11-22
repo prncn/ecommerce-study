@@ -13,10 +13,9 @@
 :root {
     --prime-color: #87ecd0;
     --prime-color-alt: #4bad9d;
-    --white: #fafafa;
-    --black: #101010;
-    --black-alt: #a1a1a1;
-    --gray: #f0f1f3
+    --light-gray: #f8f8f8;
+    --dark-gray: #525151;
+    --gray: #d2d2d2;
 }
 
 /* FONTS */
@@ -29,15 +28,6 @@
     --h2-size: .25rem;
     --regular-size: 1.2rem;
     --small-size: .75rem;
-}
-@media screen and (min-width: 768px) {
-    :root{
-        --body-font: 'Mukta', sans-serif;
-        --h1-size: 2.25rem;
-        --h2-size: .25rem;
-        --regular-size: .938rem;
-        --small-size: .815rem;
-    }
 }
 
 /* BASE */
@@ -76,7 +66,6 @@ a, a:hover {
     cursor: pointer;
 }
 
-
 button {
     padding: 9px 25px;
     background-color: var(--prime-color);
@@ -88,7 +77,7 @@ button {
 
 /* CLASS */
 .col-ba {
-    color: var(--black-alt);
+    color: var(--dark-gray);
 }
 
 .fw-bd {
@@ -104,6 +93,7 @@ button {
     font-weight: 400;
     cursor: pointer;
     margin-right: auto;
+    padding-left: 1em;
 }
 
 .icons {
@@ -134,6 +124,7 @@ button {
 #page-indicator {
     display: flex;
     justify-content: center;
+    margin-top: 2rem;
     margin-bottom: 20rem;
 }
 
@@ -147,4 +138,22 @@ button {
     font-weight: bold;
     color: white;
     background-color: var(--prime-color);
+}
+
+.page-btn:hover {
+    background-color: var(--prime-color-alt);
+}
+
+@media screen and (max-width: 700px) { 
+    .responsive-link {
+        display: none !important;
+    }
+    
+    .prod-section {
+        max-width: 100%;
+    }
+
+    .product-price-btn button {
+        width: 80% !important;
+    }
 }

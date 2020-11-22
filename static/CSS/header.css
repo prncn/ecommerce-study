@@ -24,13 +24,13 @@ header {
 }
 
 .sticky-nav {
+    border-radius: 50px;
     position: fixed;
     top: 0;
     margin-top: 2rem;
-    background-color: var(--white);
+    background-color: white;
     z-index: 1;
     
-
     -webkit-box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.15);
     box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.15);
@@ -45,6 +45,14 @@ header {
 .nav-links {
     list-style: none;
     font-weight: bold;
+}
+
+@media screen and (max-width: 768px){
+    .nav-links {
+        width: 3rem;
+        display: flex;
+        justify-content: center;
+    }
 }
 
 .nav-links li {

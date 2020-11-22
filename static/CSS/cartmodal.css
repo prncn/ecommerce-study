@@ -108,7 +108,7 @@
 
 .modal-footer {
     padding: 1.7rem;
-    background-color: var(--gray);
+    background-color: var(--light-gray);
     position: absolute;
     bottom: 0;
     width: inherit;
